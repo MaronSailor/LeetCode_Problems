@@ -1,0 +1,51 @@
+// Check If N and Its Double Exist
+ 
+// link - https://leetcode.com/problems/check-if-n-and-its-double-exist/description/?envType=daily-question&envId=2024-12-01
+
+// Given an array arr of integers, check if there exist two indices i and j such that :
+// 
+// i != j
+// 0 <= i, j < arr.length
+//     arr[i] == 2 * arr[j]
+// 
+// 
+// 
+//     Example 1:
+// 
+// Input: arr = [10, 2, 5, 3]
+// Output : true
+// Explanation : For i = 0 and j = 2, arr[i] == 10 == 2 * 5 == 2 * arr[j]
+// 
+// Example 2 :
+// 
+//     Input : arr = [3, 1, 7, 11]
+//     Output : false
+//     Explanation : There is no i and j that satisfy the conditions.
+
+
+
+
+#include <iostream>
+#include <vector>
+
+#define arOut(arr) for (int i = 0; i < arr.size(); i++) { std::cout << arr.at(i); }
+
+class Solution {
+public:
+    bool checkIfExist(std::vector<int>& ogArray) {          // ogArray - original Array
+        for (int i = 0; i < ogArray.size(); i++) {          // we take array and loop through it to define INT to compare with
+            for (int j = 0; j < ogArray.size(); j++) {      // we take the same array and loop through it to define second INT which will be multiplied
+                if (ogArray.at(i) == ogArray.at(j) * 2 && i != j)     // we check if the array[i] from the first loop is equal to double of the ÍNT in array[j] from the second loop and [i] is not equal to [j]
+                    return true;                            
+            }
+        }
+        return false;
+    }
+};
+
+int main()
+{
+    std::vector <int> myArray = {-2,-4,-8, 2};
+    Solution sol;
+    std::cout << "Solution => " << sol.checkIfExist(myArray);
+}
